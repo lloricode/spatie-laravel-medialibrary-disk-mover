@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Lloricode\SpatieLaravelMediaLibraryDiskMover\Commands\MoveMediaToDiskCommand;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
@@ -16,7 +18,7 @@ it('move disk', function () {
 
     assertDatabaseEmpty(Media::class);
 
-    addMediaToModel($model);
+    $media = addMediaToModel($model);
 
     assertDatabaseCount(Media::class, 1);
     assertDatabaseHas(Media::class, [
@@ -24,16 +26,29 @@ it('move disk', function () {
         'conversions_disk' => 'public',
     ]);
 
+
+    Storage::disk('s3')
+        ->assertMissing(
+            mediaPath($media, 's3')
+        );
+
     artisan(MoveMediaToDiskCommand::class, [
         'fromDisk' => 'public',
         'toDisk' => 's3',
     ])
         ->assertSuccessful();
 
+    $media->refresh();
+
     assertDatabaseCount(Media::class, 1);
     assertDatabaseHas(Media::class, [
         'disk' => 's3',
         'conversions_disk' => 's3',
     ]);
+
+    Storage::disk('s3')
+        ->assertExists(
+            mediaPath($media, 's3')
+        );
 
 });

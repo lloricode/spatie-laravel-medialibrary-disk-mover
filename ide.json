@@ -1,0 +1,17 @@
+{
+    "$schema": "https://laravel-ide.com/schema/laravel-ide-v2.json",
+    "completions": [
+        {
+            "complete": "configKey",
+            "options": {
+                "prefix": "filesystems.disks"
+            },
+            "condition": [
+                {
+                    "functionNames": ["mediaPath"],
+                    "parameters": [2]
+                }
+            ]
+        }
+    ]
+}

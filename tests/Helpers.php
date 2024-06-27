@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Illuminate\Http\UploadedFile;
 use Lloricode\SpatieLaravelMediaLibraryDiskMover\Tests\Fixtures\TestModel;
 use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 function createModel(): TestModel
 {
@@ -15,8 +16,17 @@ function createModel(): TestModel
     return $model;
 }
 
-function addMediaToModel(HasMedia $model): void
+function addMediaToModel(HasMedia $model): Media
 {
-    $model->addMedia(UploadedFile::fake()->image('test.png'))
+    return $model->addMedia(UploadedFile::fake()->image('test.png'))
         ->toMediaCollection('images');
+}
+
+function mediaPath(Media $media, string $diskName): string
+{
+   return Str::replace(
+        Storage::disk($diskName)->path(''),
+        '',
+        $media->getPath()
+    );
 }
