@@ -1,10 +1,12 @@
 <?php
 
-namespace Lloricode\SpatieLaravelMedialibraryDiskMover\Tests;
+declare(strict_types=1);
+
+namespace Lloricode\SpatieLaravelMediaLibraryDiskMover\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Lloricode\SpatieLaravelMediaLibraryDiskMover\SpatieLaravelMediaLibraryDiskMoverServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Lloricode\SpatieLaravelMedialibraryDiskMover\SpatieLaravelMedialibraryDiskMoverServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -13,14 +15,14 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Lloricode\\SpatieLaravelMedialibraryDiskMover\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'Lloricode\\SpatieLaravelMediaLibraryDiskMover\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 
     protected function getPackageProviders($app)
     {
         return [
-            SpatieLaravelMedialibraryDiskMoverServiceProvider::class,
+            SpatieLaravelMediaLibraryDiskMoverServiceProvider::class,
         ];
     }
 

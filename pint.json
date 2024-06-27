@@ -1,0 +1,8 @@
+{
+    "preset": "laravel",
+    "cache-file": "build/pint",
+    "rules": {
+        "declare_strict_types": true,
+        "single_trait_insert_per_statement": true
+    }
+}

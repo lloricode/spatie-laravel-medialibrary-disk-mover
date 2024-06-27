@@ -16,15 +16,16 @@
         }
     ],
     "require": {
-        "php": "^8.1",
-        "spatie/laravel-package-tools": "^1.14.0",
-        "illuminate/contracts": "^10.0"
+        "php": "^8.2",
+        "illuminate/contracts": "^11.0",
+        "spatie/laravel-medialibrary": "^11.0",
+        "spatie/laravel-package-tools": "^1.14.0"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
-        "nunomaduro/collision": "^7.9",
-        "nunomaduro/larastan": "^2.0.1",
-        "orchestra/testbench": "^8.0",
+        "nunomaduro/collision": "^8.0",
+        "larastan/larastan": "^2.0.1",
+        "orchestra/testbench": "^9.0",
         "pestphp/pest": "^2.0",
         "pestphp/pest-plugin-arch": "^2.0",
         "pestphp/pest-plugin-laravel": "^2.0",
@@ -35,18 +36,18 @@
     },
     "autoload": {
         "psr-4": {
-            "Lloricode\\SpatieLaravelMedialibraryDiskMover\\": "src/",
-            "Lloricode\\SpatieLaravelMedialibraryDiskMover\\Database\\Factories\\": "database/factories/"
+            "Lloricode\\SpatieLaravelMediaLibraryDiskMover\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Lloricode\\SpatieLaravelMedialibraryDiskMover\\Tests\\": "tests/"
+            "Lloricode\\SpatieLaravelMediaLibraryDiskMover\\Tests\\": "tests/"
         }
     },
     "scripts": {
         "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
         "analyse": "vendor/bin/phpstan analyse",
+        "analyse-generate-baseline": "vendor/bin/phpstan analyse --generate-baseline",
         "test": "vendor/bin/pest",
         "test-coverage": "vendor/bin/pest --coverage",
         "format": "vendor/bin/pint"
@@ -61,11 +62,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Lloricode\\SpatieLaravelMedialibraryDiskMover\\SpatieLaravelMedialibraryDiskMoverServiceProvider"
-            ],
-            "aliases": {
-                "SpatieLaravelMedialibraryDiskMover": "Lloricode\\SpatieLaravelMedialibraryDiskMover\\Facades\\SpatieLaravelMedialibraryDiskMover"
-            }
+                "Lloricode\\SpatieLaravelMediaLibraryDiskMover\\SpatieLaravelMediaLibraryDiskMoverServiceProvider"
+            ]
         }
     },
     "minimum-stability": "dev",

@@ -1,0 +1,16 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Cannot cast array\\|bool\\|string\\|null to string\\.$#"
+			count: 2
+			path: src/Commands/MoveMediaToDiskCommand.php
+
+		-
+			message: "#^Cannot access property \\$id on Spatie\\\\MediaLibrary\\\\MediaCollections\\\\Models\\\\Media\\|null\\.$#"
+			count: 1
+			path: src/Jobs/CollectMediaToMoveJob.php
+
+		-
+			message: "#^Parameter \\#2 \\$contents of method Illuminate\\\\Filesystem\\\\FilesystemAdapter\\:\\:put\\(\\) expects Illuminate\\\\Http\\\\File\\|Illuminate\\\\Http\\\\UploadedFile\\|Psr\\\\Http\\\\Message\\\\StreamInterface\\|resource\\|string, resource\\|null given\\.$#"
+			count: 1
+			path: src/Jobs/MoveMediaFileToDiskJob.php
