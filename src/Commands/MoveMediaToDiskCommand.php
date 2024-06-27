@@ -8,10 +8,10 @@ use Illuminate\Console\Command;
 use Lloricode\SpatieLaravelMediaLibraryDiskMover\Jobs\CollectMediaToMoveJob;
 use Symfony\Component\Console\Attribute\AsCommand;
 
-#[AsCommand(name: 'move-media-to-disk', description: 'Move media from disk to a new disk')]
+#[AsCommand(name: 'media-library:move-disk', description: 'Move media from disk to a new disk')]
 class MoveMediaToDiskCommand extends Command
 {
-    protected $signature = 'move-media-to-disk {fromDisk} {toDisk}';
+    protected $signature = 'media-library:move-disk {fromDisk} {toDisk}';
 
     /**
      * @throws \Throwable
@@ -25,6 +25,8 @@ class MoveMediaToDiskCommand extends Command
         $this->checkIfDiskExists($diskNameTo);
 
         dispatch(new CollectMediaToMoveJob($diskNameFrom, $diskNameTo));
+
+        $this->components->info('Done!');
 
         return self::SUCCESS;
     }
