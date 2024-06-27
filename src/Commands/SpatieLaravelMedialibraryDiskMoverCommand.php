@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Lloricode\SpatieLaravelMedialibraryDiskMover\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class SpatieLaravelMedialibraryDiskMoverCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'spatie-laravel-medialibrary-disk-mover';
 
     public $description = 'My command';
 

@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "lloricode/spatie-laravel-medialibrary-disk-mover",
+    "description": "This is my package spatie-laravel-medialibrary-disk-mover",
     "keywords": [
-        ":vendor_name",
+        "lloricode",
         "laravel",
-        ":package_slug"
+        "spatie-laravel-medialibrary-disk-mover"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/lloricode/spatie-laravel-medialibrary-disk-mover",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Lloric",
+            "email": "lloricode@gmail.com",
             "role": "Developer"
         }
     ],
@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "Lloricode\\SpatieLaravelMedialibraryDiskMover\\": "src/",
+            "Lloricode\\SpatieLaravelMedialibraryDiskMover\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/"
+            "Lloricode\\SpatieLaravelMedialibraryDiskMover\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -61,10 +61,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Lloricode\\SpatieLaravelMedialibraryDiskMover\\SpatieLaravelMedialibraryDiskMoverServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "SpatieLaravelMedialibraryDiskMover": "Lloricode\\SpatieLaravelMedialibraryDiskMover\\Facades\\SpatieLaravelMedialibraryDiskMover"
             }
         }
     },
