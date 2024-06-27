@@ -35,9 +35,11 @@ class CollectMediaToMoveJob implements ShouldQueue
         $recordsToMove = $recordsToMove->limit($limit = 1000)
             ->get();
 
-        $recordsToMove->each(function (Media $media) {
-            dispatch(new MoveMediaToDiskJob($media, $this->diskNameFrom, $this->diskNameTo));
-        });
+        $recordsToMove->each(
+            fn (Media $media) => dispatch(
+                new MoveMediaToDiskJob($media, $this->diskNameFrom, $this->diskNameTo)
+            )
+        );
 
         if ($recordsToMove->count() === $limit) {
             dispatch(new CollectMediaToMoveJob($this->diskNameFrom, $this->diskNameTo, $recordsToMove->last()->id));
