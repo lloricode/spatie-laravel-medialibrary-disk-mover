@@ -6,15 +6,15 @@ namespace Lloricode\SpatieLaravelMediaLibraryDiskMover\Commands;
 
 use Illuminate\Console\Command;
 use Lloricode\SpatieLaravelMediaLibraryDiskMover\Jobs\CollectMediaToMoveJob;
+use Symfony\Component\Console\Attribute\AsCommand;
 
+#[AsCommand(name: 'move-media-to-disk', description: 'Move media from disk to a new disk')]
 class MoveMediaToDiskCommand extends Command
 {
     protected $signature = 'move-media-to-disk {fromDisk} {toDisk}';
 
-    protected $description = 'Move media from disk to a new disk';
-
     /**
-     * @throws \Exception
+     * @throws \Throwable
      */
     public function handle(): int
     {
@@ -30,12 +30,12 @@ class MoveMediaToDiskCommand extends Command
     }
 
     /**
-     * @throws \Exception
+     * @throws \Throwable
      */
     private function checkIfDiskExists(string $diskName): void
     {
         if (! config("filesystems.disks.{$diskName}.driver")) {
-            throw new \Exception("Disk driver for disk `{$diskName}` not set.");
+            $this->fail("Disk driver for disk `{$diskName}` not set.");
         }
     }
 }
