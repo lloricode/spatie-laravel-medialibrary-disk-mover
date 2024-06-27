@@ -1,6 +1,11 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Cannot cast array\\|bool\\|string to string\\.$#"
+			count: 1
+			path: src/Commands/MoveMediaToDiskCommand.php
+
+		-
 			message: "#^Cannot cast array\\|bool\\|string\\|null to string\\.$#"
 			count: 2
 			path: src/Commands/MoveMediaToDiskCommand.php

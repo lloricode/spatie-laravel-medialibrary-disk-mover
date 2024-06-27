@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Lloricode\SpatieLaravelMediaLibraryDiskMover\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Config;
 use Lloricode\SpatieLaravelMediaLibraryDiskMover\Jobs\CollectMediaToMoveJob;
 use Symfony\Component\Console\Attribute\AsCommand;
 
@@ -20,7 +21,7 @@ class MoveMediaToDiskCommand extends Command
     {
         $diskNameFrom = (string) $this->argument('fromDisk');
         $diskNameTo = (string) $this->argument('toDisk');
-        $queueName = (string) ($this->argument('queueName') ?? config('media-library.queue_name'));
+        $queueName = (string) ($this->argument('queueName') ?? Config::string('media-library.queue_name'));
 
         $this->checkIfDiskExists($diskNameFrom);
         $this->checkIfDiskExists($diskNameTo);

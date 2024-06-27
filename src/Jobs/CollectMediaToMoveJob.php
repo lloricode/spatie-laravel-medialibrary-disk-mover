@@ -9,6 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Config;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class CollectMediaToMoveJob implements ShouldQueue
@@ -24,7 +25,7 @@ class CollectMediaToMoveJob implements ShouldQueue
         private readonly ?int $offset = null,
         private readonly ?string $queueName = null,
     ) {
-        $this->queue = $this->queueName ?? config('media-library.queue_name');
+        $this->queue = $this->queueName ?? Config::string('media-library.queue_name');
     }
 
     public function handle(): void
