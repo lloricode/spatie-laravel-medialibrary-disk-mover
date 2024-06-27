@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 use Lloricode\SpatieLaravelMediaLibraryDiskMover\Commands\MoveMediaToDiskCommand;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
@@ -25,7 +24,6 @@ it('move disk', function () {
         'disk' => 'public',
         'conversions_disk' => 'public',
     ]);
-
 
     Storage::disk('s3')
         ->assertMissing(

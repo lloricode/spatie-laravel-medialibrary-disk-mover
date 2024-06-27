@@ -24,7 +24,7 @@ function addMediaToModel(HasMedia $model): Media
 
 function mediaPath(Media $media, string $diskName): string
 {
-   return Str::replace(
+    return Str::replace(
         Storage::disk($diskName)->path(''),
         '',
         $media->getPath()
