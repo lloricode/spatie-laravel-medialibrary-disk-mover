@@ -25,6 +25,7 @@ class MoveMediaUpdateDiskJob implements ShouldQueue
     public function handle(): void
     {
         $this->media->disk = $this->diskNameTo;
+        $this->media->conversions_disk = $this->diskNameTo;
 
         $this->media->save();
     }
