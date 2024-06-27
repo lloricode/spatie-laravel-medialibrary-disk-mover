@@ -24,8 +24,11 @@ class MoveMediaToDiskJob implements ShouldQueue
     public function __construct(
         private readonly Media $media,
         private readonly string $diskNameFrom,
-        private readonly string $diskNameTo
-    ) {}
+        private readonly string $diskNameTo,
+        private readonly ?string $queueName = null,
+    ) {
+        $this->queue = $this->queueName ?? config('media-library.queue_name');
+    }
 
     /**
      * @throws \Exception

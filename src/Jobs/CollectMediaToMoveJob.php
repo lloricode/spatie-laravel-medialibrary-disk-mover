@@ -21,8 +21,11 @@ class CollectMediaToMoveJob implements ShouldQueue
     public function __construct(
         private readonly string $diskNameFrom,
         private readonly string $diskNameTo,
-        private readonly ?int $offset = null
-    ) {}
+        private readonly ?int $offset = null,
+        private readonly ?string $queueName = null,
+    ) {
+        $this->queue = $this->queueName ?? config('media-library.queue_name');
+    }
 
     public function handle(): void
     {
